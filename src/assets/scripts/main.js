@@ -20,6 +20,7 @@ const parameters = {
 
 function setupsGraphics(){
   parameters.scene = new THREE.Scene();
+  parameters.scene.background = new THREE.Color("rgb(255, 255, 255)");
   parameters.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
 
   // Set renderer
@@ -33,8 +34,8 @@ function setupsGraphics(){
 
   //Set initial Light
   parameters.light = new THREE.HemisphereLight(
-    new THREE.Color("rgb(255, 200, 100)"),
-    new THREE.Color("rgb(30, 80, 100)"),
+    new THREE.Color("rgb(150, 150, 150)"),
+    new THREE.Color("rgb(0, 0, 0)"),
     1
   );
 
@@ -87,9 +88,12 @@ async function splitMainCube() {
     parameters.smallerCubes.push(cube);
   }
 
+  parameters.scene.remove(parameters.light);
+
+  parameters.scene.background = new THREE.Color("rgb(0,0,0)");
   parameters.light = new THREE.HemisphereLight(
-    new THREE.Color("rgb(200, 200, 200)"),
-    new THREE.Color("rgb(30, 80, 100)"),
+    new THREE.Color("rgb(255, 255, 255)"),
+    new THREE.Color("rgb(0, 0, 0)"),
     1
   );
 
